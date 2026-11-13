@@ -147,3 +147,8 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.15; }
 .faq summary { cursor: pointer; font-weight: 600; font-size: 1rem; }
 .faq summary::marker { color: var(--gold); }
 .faq details p { color: var(--muted); font-size: 0.95rem; margin-top: 0.6rem; }
+
+.footer-cta { border: 1px solid rgba(200, 162, 78, 0.45); padding: 1.6rem 2rem; max-width: 40rem; margin: 0 auto 2.2rem; border-radius: 2px; }
+.footer-cta-title { font-family: var(--serif); font-size: 1.5rem; margin-bottom: 0.4rem; }
+.footer-cta-text { color: var(--muted); font-size: 0.95rem; }
+.footer-cta .link { color: var(--gold-soft); }

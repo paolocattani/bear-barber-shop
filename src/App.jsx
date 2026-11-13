@@ -109,7 +109,6 @@ function Prices() {
           </div>
         ))}
       </div>
-      <p className="muted small prezzi-note">Listino di esempio: i prezzi veri li confermiamo col salone prima della pubblicazione.</p>
     </section>
   )
 }
@@ -169,7 +168,6 @@ function Contact() {
         <article className="card">
           <h3>Orari</h3>
           <p>Mar – Ven: 8.30 – 12.30 / 15.00 – 21.30<br />Sab: 8.30 – 12.30 / 15.00 – 20.00<br />Lun e Dom: chiuso</p>
-          <p className="muted small">Orari dalla scheda Google, da confermare col salone.</p>
         </article>
       </div>
     </section>
@@ -179,8 +177,13 @@ function Contact() {
 function Footer() {
   return (
     <footer className="footer">
+      <div className="footer-cta">
+        <p className="footer-cta-title">Ti piace questo sito?</p>
+        <p className="footer-cta-text">Prenotalo a prezzo scontato fino al 31/12/2026.<br />
+          <a className="link" href="tel:+393472545771">347 254 5771</a> &middot; <a className="link" href="mailto:paolocattani0501@gmail.com">paolocattani0501@gmail.com</a>
+        </p>
+      </div>
       <p className="brand">BEAR<span className="brand-sub"> Barber Shop</span></p>
-      <p className="muted small">Demo di anteprima: testi, prezzi e orari sono esempi da confermare con il salone prima della pubblicazione.</p>
     </footer>
   )
 }
