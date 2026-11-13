@@ -83,8 +83,7 @@ function Hero() {
         <div className="hero-cta">
           <a className="btn btn-gold" href={PHONE_TEL}>Chiama per prenotare</a>
           <a className="btn btn-ghost" href={WHATSAPP_URL} target="_blank" rel="noreferrer">Scrivici su WhatsApp</a>
-          <span className="review-google">5,0 su Google · 813 recensioni</span>
-        <a className="btn btn-ghost" href={MAPS_URL} target="_blank" rel="noreferrer">Trovasi su Google Maps</a>
+          <a className="btn btn-ghost" href={MAPS_URL} target="_blank" rel="noreferrer">Trovasi su Google Maps</a>
         </div>
       </div>
     </section>
@@ -211,6 +210,7 @@ function Reviews() {
         <p className="eyebrow">Recensioni</p>
         <h2>813 recensioni a 5 stelle.<br />I clienti parlano al posto nostro.</h2>
         <p className="muted">Il punteggio più alto tra i barbieri della zona, visibile sulla scheda Google del salone.</p>
+        <span className="review-google">5,0 su Google · 813 recensioni</span>
         <a className="btn btn-ghost" href={MAPS_URL} target="_blank" rel="noreferrer">Leggi le recensioni</a>
       </div>
       <div className="reviews-grid">
