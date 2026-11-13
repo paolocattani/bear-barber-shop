@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react'
+
 const MAPS_URL = 'https://maps.google.com/?cid=17494163896465365060' // placeholder, da confermare
 const PHONE_DISPLAY = '351 967 7743'
 const PHONE_TEL = 'tel:+393519677743'
@@ -5,6 +7,7 @@ const WHATSAPP_URL = 'https://wa.me/393519677743?text=Ciao%2C%20vorrei%20prenota
 
 const NAV = [
   { href: '#servizi', label: 'Servizi' },
+  { href: '#galleria', label: 'Galleria' },
   { href: '#prezzi', label: 'Prezzi' },
   { href: '#faq', label: 'FAQ' },
   { href: '#recensioni', label: 'Recensioni' },
@@ -32,6 +35,16 @@ const FAQS = [
   { q: 'Accettate carte e pagamenti digitali?', a: 'Sì, accettiamo contanti, carte e pagamenti contactless.' },
   { q: 'Fate tagli anche per bambini?', a: 'Sì, tagliamo grandi e piccoli, anche i più piccoli.' },
   { q: 'Dove siete?', a: 'In Via G. Marconi 69 a Ponte San Nicolò (PD). Parcheggio facile nei dintorni.' },
+]
+
+// Galleria: 6 foto di esempio, da sostituire con le foto vere del salone
+const GALLERY = [
+  { src: './gallery/gallery-1.jpg', alt: 'Rasatura con rasoio tradizionale' },
+  { src: './gallery/gallery-2.jpg', alt: 'Taglio in corso' },
+  { src: './gallery/gallery-3.jpg', alt: 'Interno del salone' },
+  { src: './gallery/gallery-4.jpg', alt: 'Panno caldo' },
+  { src: './gallery/gallery-5.jpg', alt: 'Gli strumenti del barbiere' },
+  { src: './gallery/gallery-6.jpg', alt: 'Styling finale allo specchio' },
 ]
 
 function Badge() {
@@ -132,6 +145,46 @@ function Faq() {
   )
 }
 
+function Gallery() {
+  const [open, setOpen] = useState(-1)
+  useEffect(() => {
+    const onKey = (e) => {
+      if (open < 0) return
+      if (e.key === 'Escape') setOpen(-1)
+      else if (e.key === 'ArrowRight') setOpen((open + 1) % GALLERY.length)
+      else if (e.key === 'ArrowLeft') setOpen((open + GALLERY.length - 1) % GALLERY.length)
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [open])
+  return (
+    <section className="section" id="galleria">
+      <div className="section-head">
+        <p className="eyebrow">Galleria</p>
+        <h2>Il salone, dal vivo</h2>
+      </div>
+      <div className="gallery-grid">
+        {GALLERY.map((g, i) => (
+          <button key={g.src} className="gallery-item" onClick={() => setOpen(i)} aria-label={g.alt}>
+            <img src={g.src} alt={g.alt} loading="lazy" />
+          </button>
+        ))}
+      </div>
+      {open >= 0 && (
+        <div className="lightbox" onClick={() => setOpen(-1)}>
+          <button className="lightbox-close" aria-label="Chiudi" onClick={() => setOpen(-1)}>×</button>
+          <img src={GALLERY[open].src} alt={GALLERY[open].alt} onClick={(e) => e.stopPropagation()} />
+          <p className="lightbox-caption" onClick={(e) => e.stopPropagation()}>{GALLERY[open].alt}</p>
+          <div className="lightbox-nav" onClick={(e) => e.stopPropagation()}>
+            <button aria-label="Precedente" onClick={() => setOpen((open + GALLERY.length - 1) % GALLERY.length)}>‹</button>
+            <button aria-label="Successiva" onClick={() => setOpen((open + 1) % GALLERY.length)}>›</button>
+          </div>
+        </div>
+      )}
+    </section>
+  )
+}
+
 function Reviews() {
   return (
     <section className="section reviews" id="recensioni">
@@ -195,6 +248,7 @@ export default function App() {
       <main>
         <Hero />
         <Services />
+        <Gallery />
         <Prices />
         <Faq />
         <Reviews />

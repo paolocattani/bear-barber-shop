@@ -152,3 +152,17 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.15; }
 .footer-cta-title { font-family: var(--serif); font-size: 1.5rem; margin-bottom: 0.4rem; }
 .footer-cta-text { color: var(--muted); font-size: 0.95rem; }
 .footer-cta .link { color: var(--gold-soft); }
+
+/* Galleria */
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media (max-width:700px){.gallery-grid{grid-template-columns:repeat(2,1fr);gap:10px}}
+.gallery-item{padding:0;border:1px solid rgba(212,175,55,.25);border-radius:12px;overflow:hidden;cursor:pointer;background:none;aspect-ratio:4/3}
+.gallery-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease}
+.gallery-item:hover img{transform:scale(1.06)}
+.lightbox{position:fixed;inset:0;z-index:1000;background:rgba(12,12,14,.95);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px}
+.lightbox img{max-width:min(1000px,92vw);max-height:76vh;border-radius:10px;border:1px solid rgba(212,175,55,.35)}
+.lightbox-caption{color:#f5e9cf;font-size:.95rem;margin:0}
+.lightbox-close{position:absolute;top:18px;right:24px;background:none;border:1px solid rgba(212,175,55,.4);border-radius:50%;width:44px;height:44px;color:#f5e9cf;font-size:1.6rem;cursor:pointer;line-height:1}
+.lightbox-nav{display:flex;gap:16px}
+.lightbox-nav button{background:none;border:1px solid rgba(212,175,55,.4);border-radius:50%;width:48px;height:48px;color:#f5e9cf;font-size:1.6rem;cursor:pointer;line-height:1}
+.lightbox-nav button:hover,.lightbox-close:hover{background:rgba(212,175,55,.15)}
