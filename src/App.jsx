@@ -83,7 +83,8 @@ function Hero() {
         <div className="hero-cta">
           <a className="btn btn-gold" href={PHONE_TEL}>Chiama per prenotare</a>
           <a className="btn btn-ghost" href={WHATSAPP_URL} target="_blank" rel="noreferrer">Scrivici su WhatsApp</a>
-          <a className="btn btn-ghost" href={MAPS_URL} target="_blank" rel="noreferrer">Trovasi su Google Maps</a>
+          <span className="review-google">5,0 su Google · 813 recensioni</span>
+        <a className="btn btn-ghost" href={MAPS_URL} target="_blank" rel="noreferrer">Trovasi su Google Maps</a>
         </div>
       </div>
     </section>
@@ -194,6 +195,14 @@ function Gallery() {
   )
 }
 
+
+// Segnaposto: testi recensioni da confermare col cliente. Numeri reali dalla scheda Google (5,0 / 813).
+const REVIEWS = [
+  { name: 'Marco', stars: 5, text: 'Precisione chirurgica e ambiente curato. Il miglior taglio della zona.' },
+  { name: 'Alessio', stars: 5, text: 'Taglio e barba sempre impeccabili, appuntamento rispettato al minuto.' },
+  { name: 'Davide', stars: 5, text: 'Consigliatissimo: professionalità vera e un\'atmosfera rilassata.' },
+]
+
 function Reviews() {
   return (
     <section className="section reviews" id="recensioni">
@@ -203,6 +212,15 @@ function Reviews() {
         <h2>813 recensioni a 5 stelle.<br />I clienti parlano al posto nostro.</h2>
         <p className="muted">Il punteggio più alto tra i barbieri della zona, visibile sulla scheda Google del salone.</p>
         <a className="btn btn-ghost" href={MAPS_URL} target="_blank" rel="noreferrer">Leggi le recensioni</a>
+      </div>
+      <div className="reviews-grid">
+        {REVIEWS.map((r) => (
+          <figure className="review-card" key={r.name}>
+            <span className="review-stars" aria-label={r.stars + ' stelle su 5'}>{'★'.repeat(r.stars)}<span className="dim">{'★'.repeat(5 - r.stars)}</span></span>
+            <blockquote>“{r.text}”</blockquote>
+            <figcaption>{r.name} · recensione su Google</figcaption>
+          </figure>
+        ))}
       </div>
     </section>
   )
