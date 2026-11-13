@@ -1,9 +1,12 @@
 const MAPS_URL = 'https://maps.google.com/?cid=17494163896465365060' // placeholder, da confermare
 const PHONE_DISPLAY = '351 967 7743'
 const PHONE_TEL = 'tel:+393519677743'
+const WHATSAPP_URL = 'https://wa.me/393519677743?text=Ciao%2C%20vorrei%20prenotare%20un%20appuntamento'
 
 const NAV = [
   { href: '#servizi', label: 'Servizi' },
+  { href: '#prezzi', label: 'Prezzi' },
+  { href: '#faq', label: 'FAQ' },
   { href: '#recensioni', label: 'Recensioni' },
   { href: '#contatti', label: 'Contatti' },
 ]
@@ -13,6 +16,22 @@ const SERVICES = [
   { name: 'Barba', desc: 'Modellatura e cura della barba con prodotti dedicati.' },
   { name: 'Rasoio tradizionale', desc: 'Rasatura a lama con panno caldo, per un risultato perfetto.' },
   { name: 'Taglio + barba', desc: 'Il servizio completo: viene con un taglio, esce con uno stile.' },
+]
+
+// Listino di ESEMPIO: prezzi finti, da confermare col salone
+const PREZZI = [
+  { name: 'Taglio', price: '18' },
+  { name: 'Barba', price: '12' },
+  { name: 'Rasoio tradizionale', price: '20' },
+  { name: 'Taglio + barba', price: '25' },
+]
+
+// FAQ di ESEMPIO: risposte da confermare col salone
+const FAQS = [
+  { q: 'Bisogna prenotare?', a: 'Consigliamo di prenotare per evitare attese: puoi chiamare o scriverci su WhatsApp.' },
+  { q: 'Accettate carte e pagamenti digitali?', a: 'Sì, accettiamo contanti, carte e pagamenti contactless.' },
+  { q: 'Fate tagli anche per bambini?', a: 'Sì, tagliamo grandi e piccoli, anche i più piccoli.' },
+  { q: 'Dove siete?', a: 'In Via G. Marconi 69 a Ponte San Nicolò (PD). Parcheggio facile nei dintorni.' },
 ]
 
 function Badge() {
@@ -47,6 +66,7 @@ function Hero() {
         <Badge />
         <div className="hero-cta">
           <a className="btn btn-gold" href={PHONE_TEL}>Chiama per prenotare</a>
+          <a className="btn btn-ghost" href={WHATSAPP_URL} target="_blank" rel="noreferrer">Scrivici su WhatsApp</a>
           <a className="btn btn-ghost" href={MAPS_URL} target="_blank" rel="noreferrer">Trovasi su Google Maps</a>
         </div>
       </div>
@@ -73,13 +93,53 @@ function Services() {
   )
 }
 
+function Prices() {
+  return (
+    <section className="section" id="prezzi">
+      <div className="section-head">
+        <p className="eyebrow">Prezzi</p>
+        <h2>Il listino</h2>
+      </div>
+      <div className="prezzi">
+        {PREZZI.map((p) => (
+          <div className="prezzo-row" key={p.name}>
+            <span>{p.name}</span>
+            <span className="prezzo-dots" aria-hidden="true" />
+            <span className="prezzo-val">€ {p.price}</span>
+          </div>
+        ))}
+      </div>
+      <p className="muted small prezzi-note">Listino di esempio: i prezzi veri li confermiamo col salone prima della pubblicazione.</p>
+    </section>
+  )
+}
+
+function Faq() {
+  return (
+    <section className="section" id="faq">
+      <div className="section-head">
+        <p className="eyebrow">FAQ</p>
+        <h2>Domande frequenti</h2>
+      </div>
+      <div className="faq">
+        {FAQS.map((f) => (
+          <details key={f.q}>
+            <summary>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+  )
+}
+
 function Reviews() {
   return (
     <section className="section reviews" id="recensioni">
       <img className="tools-img" src="./tools.png" alt="Rasoio, forbici e pennello da barbiere su tavolo di legno" />
       <div className="reviews-text">
         <p className="eyebrow">Recensioni</p>
-        <h2>813 recensioni a 5 stelle.<br />I clienti parlano al posto nostro.</h2>
+        <h2>813 recensioni a 5 stelle.<br />I clienti parlano al posto nostro.</h2>
         <p className="muted">Il punteggio più alto tra i barbieri della zona, visibile sulla scheda Google del salone.</p>
         <a className="btn btn-ghost" href={MAPS_URL} target="_blank" rel="noreferrer">Leggi le recensioni</a>
       </div>
@@ -103,7 +163,8 @@ function Contact() {
         <article className="card">
           <h3>Telefono</h3>
           <p><a className="link" href={PHONE_TEL}>{PHONE_DISPLAY}</a></p>
-          <p className="muted">Chiamaci o scrivici su WhatsApp.</p>
+          <p><a className="link" href={WHATSAPP_URL} target="_blank" rel="noreferrer">Scrivici su WhatsApp →</a></p>
+          <p className="muted">Chiamaci o scrivici, rispondiamo in orario di apertura.</p>
         </article>
         <article className="card">
           <h3>Orari</h3>
@@ -119,7 +180,7 @@ function Footer() {
   return (
     <footer className="footer">
       <p className="brand">BEAR<span className="brand-sub"> Barber Shop</span></p>
-      <p className="muted small">Demo di anteprima: testi, servizi e orari sono esempi da confermare con il salone prima della pubblicazione.</p>
+      <p className="muted small">Demo di anteprima: testi, prezzi e orari sono esempi da confermare con il salone prima della pubblicazione.</p>
     </footer>
   )
 }
@@ -131,6 +192,8 @@ export default function App() {
       <main>
         <Hero />
         <Services />
+        <Prices />
+        <Faq />
         <Reviews />
         <Contact />
       </main>
