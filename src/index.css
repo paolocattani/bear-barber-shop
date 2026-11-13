@@ -166,3 +166,5 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.15; }
 .lightbox-nav{display:flex;gap:16px}
 .lightbox-nav button{background:none;border:1px solid rgba(212,175,55,.4);border-radius:50%;width:48px;height:48px;color:#f5e9cf;font-size:1.6rem;cursor:pointer;line-height:1}
 .lightbox-nav button:hover,.lightbox-close:hover{background:rgba(212,175,55,.15)}
+
+.gallery-more{display:flex;justify-content:center;margin-top:20px}

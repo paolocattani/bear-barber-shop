@@ -45,6 +45,9 @@ const GALLERY = [
   { src: './gallery/gallery-4.jpg', alt: 'Panno caldo' },
   { src: './gallery/gallery-5.jpg', alt: 'Gli strumenti del barbiere' },
   { src: './gallery/gallery-6.jpg', alt: 'Styling finale allo specchio' },
+  { src: './gallery/gallery-7.jpg', alt: 'Sapone e pennello' },
+  { src: './gallery/gallery-8.jpg', alt: 'Zona attesa' },
+  { src: './gallery/gallery-9.jpg', alt: 'Rifinitura del taglio' },
 ]
 
 function Badge() {
@@ -147,6 +150,7 @@ function Faq() {
 
 function Gallery() {
   const [open, setOpen] = useState(-1)
+  const [visibili, setVisibili] = useState(6) // quante foto mostrare prima del bottone
   useEffect(() => {
     const onKey = (e) => {
       if (open < 0) return
@@ -164,12 +168,17 @@ function Gallery() {
         <h2>Il salone, dal vivo</h2>
       </div>
       <div className="gallery-grid">
-        {GALLERY.map((g, i) => (
+        {GALLERY.slice(0, visibili).map((g, i) => (
           <button key={g.src} className="gallery-item" onClick={() => setOpen(i)} aria-label={g.alt}>
             <img src={g.src} alt={g.alt} loading="lazy" />
           </button>
         ))}
       </div>
+      {visibili < GALLERY.length && (
+        <div className="gallery-more">
+          <button className="btn btn-ghost" onClick={() => setVisibili(v => v + 6)}>Mostra altre foto</button>
+        </div>
+      )}
       {open >= 0 && (
         <div className="lightbox" onClick={() => setOpen(-1)}>
           <button className="lightbox-close" aria-label="Chiudi" onClick={() => setOpen(-1)}>×</button>
