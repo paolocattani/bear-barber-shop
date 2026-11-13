@@ -79,7 +79,7 @@ function Reviews() {
       <img className="tools-img" src="./tools.png" alt="Rasoio, forbici e pennello da barbiere su tavolo di legno" />
       <div className="reviews-text">
         <p className="eyebrow">Recensioni</p>
-        <h2>813 recensioni a 5 stelle.<br />I clienti parlano al posto nostro.</h2>
+        <h2>813 recensioni a 5 stelle.<br />I clienti parlano al posto nostro.</h2>
         <p className="muted">Il punteggio più alto tra i barbieri della zona, visibile sulla scheda Google del salone.</p>
         <a className="btn btn-ghost" href={MAPS_URL} target="_blank" rel="noreferrer">Leggi le recensioni</a>
       </div>
@@ -107,7 +107,7 @@ function Contact() {
         </article>
         <article className="card">
           <h3>Orari</h3>
-          <p>Mar – Ven: 8.30 – 12.30 / 15 – 21.30<br />Sab: 8.30 – 12.30 / 15 – 20<br />Lun e Dom: chiuso</p>
+          <p>Mar – Ven: 8.30 – 12.30 / 15.00 – 21.30<br />Sab: 8.30 – 12.30 / 15.00 – 20.00<br />Lun e Dom: chiuso</p>
           <p className="muted small">Orari dalla scheda Google, da confermare col salone.</p>
         </article>
       </div>

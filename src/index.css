@@ -129,3 +129,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.15; }
 }
 .footer .brand-sub { font-style: italic; }
 .footer .muted { max-width: 40rem; margin: 0.8rem auto 0; }
+
+@media (min-width: 900px) {
+  #servizi .grid { grid-template-columns: repeat(4, 1fr); }
+}
